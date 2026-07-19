@@ -1,44 +1,24 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## TTS (Text-to-Speech)
 
-## What Goes Here
+**Voz por defecto:** Daniela (Piper, argentina/rioplatense)
+- Modelo: `es_AR-daniela-high.onnx` (114MB)
+- Config: `noise_scale=0.8`, `noise_w=1.0`, `length_scale=0.9`
+- Script: `/root/.openclaw/workspace/tts.py` (usar este siempre)
 
-Things like:
+**Flujo para responder con audio:**
+1. Generar WAV con Python/piper
+2. Convertir a OGG con ffmpeg
+3. Enviar con sendVoice via Telegram Bot API
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+**Flujo para recibir audios:**
+1. ffmpeg convierte inbound .ogg → WAV 16kHz
+2. whisper tiny transcribe
+3. Responder normalmente
 
-## Examples
+## Telegram
 
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
-
-## Related
-
-- [Agent workspace](/concepts/agent-workspace)
+- Bot: @fraberon_bot (7990245507)
+- Token guardado en openclaw.json
+- Chat ID: 8805705179 (Franco)
